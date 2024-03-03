@@ -13,11 +13,15 @@ Mostra totes les transaccions realitzades per empreses d'Alemanya.
                         # Utilizo la función where para seleccionar solo alemania
 
 
+Ese codigo devuelve 118 filas que contiene informacion de las empresas que han realiado transacciones de Alemania.
+
+
 [Output workbench](output_n1e1.md)
 
 
 
 ## Exercici 2
+
 Màrqueting està preparant alguns informes de tancaments de gestió, et demanen que els passis un llistat de les empreses que han realitzat transaccions per una suma superior a la mitjana de totes les transaccions.
 
 

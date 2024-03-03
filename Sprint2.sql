@@ -17,5 +17,3 @@ WHERE	company.country = "germany";			# Utilizo la función where para selecciona
 /* Màrqueting està preparant alguns informes de tancaments de gestió, et demanen que els passis un llistat de les empreses que han realitzat transaccions per una suma superior a la mitjana de totes les transaccions.*/
 
 
-
-  
