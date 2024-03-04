@@ -7,19 +7,21 @@ Mostra totes les transaccions realitzades per empreses d'Alemanya.
 Para resolver este exercici utilizo el siguiente código: 
 
 ```sql
-SELECT 	*										 
+SELECT 	*
 FROM 	transactions.company					 
 JOIN 	transactions.transaction                
-ON		transaction.company_id = company.id
+ON      transaction.company_id = company.id
 WHERE	company.country = "germany";			
 ```
 
-Utilizo la función where para seleccionar solo Alemania
-Ese código devuelve 118 filas que contiene información de las empresas que han realizado transacciones de Alemania.
+Utilizo la función WHERE para seleccionar solo las empresas de Alemania.
+Este código devuelve 118 filas que contienen información de las empresas que han realizado transacciones desde Alemania.
 
-![](prints/n1_ex1.png)
+<details>
+	<summary>Output del codigo</summary>
 
-[Output workbench](output_n1e1.md)
+![logo](prints/n1_ex1.png)
+</details>
 
 ## Exercici 2
 
@@ -27,13 +29,15 @@ Màrqueting està preparant alguns informes de tancaments de gestió, et demanen
 
 Informe de tancament de gestion: 
 
-1. Obtener el valor de la mediana de todas las transacciones
+**Paso 1**: Obtener el valor de la media de todas las transacciones
 
 ```sql
 SELECT AVG(amount) FROM transactions.transaction;
 ```
 
-2. Obtener una tabla que indique las empresas con nombre de pais que han hecho transacciones mayores que la media
+[Output workbench](prints/tabla1.md)
+
+**Paso 2**: Obtener una tabla que indique las empresas con nombre de pais que han hecho transacciones mayores que la media
 
 ```sql
 SELECT  company.country,
@@ -45,7 +49,7 @@ ON		transaction.company_id = company.id		#
 WHERE	transaction.amount > (SELECT AVG(amount) FROM transactions.transaction);
 ```
 
-3. Obtener un listado a partir de la tabla anterior de los paises que lo conforman
+**Paso 3**: Obtener un listado a partir de la tabla anterior de los paises que lo conforman
 
 ```sql 
 SELECT DISTINCT Country
@@ -60,8 +64,7 @@ FROM
             (SELECT AVG(amount) FROM transactions.transaction)) AS tb_sq
 ORDER BY	Country ASC;
 ```
-
-En este ultimo caso, utilizo el distinct debido a que se repetin algunas compañias.
+Utilizo las funciones AVG() y DISTINCT para calcular la media de las transacciones y obtener una lista única de países respectivamente.
 
 ## Exercici 3
 
@@ -76,12 +79,7 @@ JOIN 	transactions.transaction				#
 ON		transaction.company_id = company.id		# 
 WHERE   company.company_name LIKE "c%"; 
 ```
-
-El comando _**LIKE**_ permite buscar un patrón, que en este caso es que la primera letra comience por "c", que en este caso se escribe: 
-
-```sql 
-WHERE   company.company_name LIKE "c%"; 
-```
+El comando _**LIKE**_ permite buscar un patrón, que en este caso es que la primera letra comience por "c".
 
 ## Exercici 4
 
@@ -89,7 +87,7 @@ Van eliminar del sistema les empreses que no tenen transaccions registrades, lli
 
 Hago una comparacion manual del numero de compañyas en cada tabla:  
 
-```
+```sql
 SELECT DISTINCT company_id	FROM transaction;
 SELECT          company_id	FROM transaction;
 SELECT          id          FROM company;
