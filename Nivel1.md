@@ -17,7 +17,7 @@ WHERE	company.country = "germany";
 Utilizo la función where para seleccionar solo Alemania
 Ese código devuelve 118 filas que contiene información de las empresas que han realizado transacciones de Alemania.
 
-![](n1_ex1.png)
+![](prints/n1_ex1.png)
 
 [Output workbench](output_n1e1.md)
 
