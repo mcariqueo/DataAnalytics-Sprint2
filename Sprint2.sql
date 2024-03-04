@@ -16,18 +16,18 @@
 ## Exercici 2
 /* Màrqueting està preparant alguns informes de tancaments de gestió, et demanen que els passis un llistat de les empreses que han realitzat transaccions per una suma superior a la mitjana de totes les transaccions.*/
 
-# 1. Obtener el valor de la mediana de todas las transacciones
+	# 1. Obtener el valor de la mediana de todas las transacciones
 	SELECT AVG(amount) FROM transactions.transaction;
-/* Este valor que obtengo, me servira para usarlo en un where o un having*/
+	/* Este valor que obtengo, me servira para usarlo en un where o un having*/
 
-# 2. Obtener una tabla que indique las empresas con nombre de pais que han hecho transacciones mayores que la media
+	# 2. Obtener una tabla que indique las empresas con nombre de pais que han hecho transacciones mayores que la media
 	SELECT 	company.country ,company.id, transaction.amount
 	FROM 	transactions.company					# 
 	JOIN 	transactions.transaction				# 
 	ON		transaction.company_id = company.id		# 
 	WHERE	transaction.amount > (SELECT AVG(amount) FROM transactions.transaction);
 
-# 3. Obtener un listado a partir de la tabla anterior de los paises que lo conforman
+	# 3. Obtener un listado a partir de la tabla anterior de los paises que lo conforman
 
 	SELECT DISTINCT Country
 	FROM 
@@ -42,7 +42,7 @@
 # Exercici 3
 /*El departament de comptabilitat va perdre la informació de les transaccions realitzades per una empresa, però no recorden el seu nom, només recorden que el seu nom iniciava amb la lletra c. Com els pots ajudar? Comenta-ho acompanyant-ho de la informació de les transaccions.*/
 
-SELECT *
+		SELECT *
         FROM 	transactions.company					# 
 	    JOIN 	transactions.transaction				# 
 	    ON		transaction.company_id = company.id		# 
@@ -56,9 +56,9 @@ SELECT *
 
 
 #  Hago una comparacion manual del numero de compañyas en cada tabla:  
-		SELECT DISTINCT company_id	FROM transaction;
-		SELECT 			company_id	FROM transaction;
-		SELECT  		id  		FROM company;
+		SELECT  		id  		FROM company;	
+   		SELECT 			company_id	FROM transaction;
+        SELECT DISTINCT company_id	FROM transaction;
 
 ## Opcion 1:
 /* para ellos deberia entonces tener un tipo de join en el que tenga las emprseas que no tienen transacciones*/
