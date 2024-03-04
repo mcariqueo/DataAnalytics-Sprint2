@@ -1,28 +1,56 @@
 
 
-
 ## Exercici 1
 
 Mostra totes les transaccions realitzades per empreses d'Alemanya.
 
-    SELECT 	*										 Selecciono todo los campos
+Para resolver este exercici utilizo el siguiente cogido: 
+
+    SELECT 	*										 
     FROM 	transactions.company					 
     JOIN 	transactions.transaction                
     ON		transaction.company_id = company.id
     WHERE	company.country = "germany";			
-                        # Utilizo la función where para seleccionar solo alemania
+    # Utilizo la función where para seleccionar solo Alemania
 
 
-Ese codigo devuelve 118 filas que contiene informacion de las empresas que han realiado transacciones de Alemania.
+Ese código devuelve 118 filas que contiene información de las empresas que han realizado transacciones de Alemania.
 
-
+El output 
 [Output workbench](output_n1e1.md)
-
 
 
 ## Exercici 2
 
 Màrqueting està preparant alguns informes de tancaments de gestió, et demanen que els passis un llistat de les empreses que han realitzat transaccions per una suma superior a la mitjana de totes les transaccions.
+
+Informe de tancament de gestion: 
+
+1. Obtener el valor de la mediana de todas las transacciones
+
+        SELECT AVG(amount) FROM transactions.transaction;
+
+
+
+2. Obtener una tabla que indique las empresas con nombre de pais que han hecho transacciones mayyores que la media
+
+	    SELECT  company.country ,company.id, transaction.amount
+	    FROM 	transactions.company					# 
+	    JOIN 	transactions.transaction				# 
+	    ON		transaction.company_id = company.id		# 
+	    WHERE	transaction.amount > (SELECT AVG(amount) FROM transactions.transaction);
+
+3. Obtener un listado a partir de la tabla anterior de los paises que lo conforman
+
+        SELECT DISTINCT Country
+        FROM 
+        (   SELECT 	company.Country, company.id, transaction.amount
+            FROM 	transactions.company					 
+            JOIN 	transactions.transaction				 
+            ON		transaction.company_id = company.id		 
+            WHERE	transaction.amount > (SELECT AVG(amount) FROM transactions.transaction)) AS tabla_subquery
+
+        ORDER BY	Country ASC;
 
 
 
