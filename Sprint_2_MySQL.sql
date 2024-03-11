@@ -1,7 +1,5 @@
 ##### SPRINT 2 #######
-
 ############################# NIVEL 1 #########################
-
 ## Exercici 1
 /* Mostra totes les transaccions realitzades per empreses d'Alemanya.*/
 
