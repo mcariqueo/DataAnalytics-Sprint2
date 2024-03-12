@@ -20,6 +20,7 @@
 
 	/* 2. Obtener una tabla que indique las empresas con nombre de pais 
     que han hecho transacciones mayores que la media*/
+    
 	SELECT 	DISTINCT company.company_name
 	FROM 	transactions.company					# 
 	JOIN 	transactions.transaction				# 
@@ -69,5 +70,63 @@
 
 /* el IN sirve para specify multiple possible values for a column, esto lo realiza a traves de una lista de valores , tipo tupla.
 puedo generar una subquery con los valores de una tabla, que en este caso es lo que hago i*/
+
+
+
+# Sprint 2 - Nivel 2
+
+## Exercici 1
+/* Per a això, et demanen la llista de totes les transaccions realitzades per empreses
+ que estan situades en el mateix país que aquesta companyia*/
+
+SELECT transaction.* FROM transaction 
+JOIN company on company.id = transaction.company_id
+WHERE company.country = 
+	(SELECT distinct company.country FROM transaction 
+    JOIN company on company.id = transaction.company_id
+    WHERE company_name = "Nunc interdum incorporated");
+
+# Exercici 2
+/* El departament de comptabilitat necessita que trobis l'empresa que ha realitzat 
+la transacció de major suma en la base de dades.*/
+
+SELECT company.company_name FROM transaction 
+join   company on company.id = transaction.company_id
+WHERE amount = (SELECT max(amount) FROM transaction);
+
+# Sprint 2 - Nivell 3
+## Exercici 1
+/* necessiten el llistat dels països la mitjana de transaccions dels quals sigui superior a la mitjana general.*/
+
+SELECT DISTINCT company.country FROM transaction
+JOIN company on company.id = transaction.company_id
+WHERE amount > (SELECT AVG (amount) FROM transaction)
+ORDER BY 1;
+
+## Exercici 2
+/* Vol un llistat de les empreses on especifiquis si tenen més de 4 transaccions o menys.*/
+
+SELECT 		company.company_name,
+    CASE	WHEN COUNT(transaction.id) < 4	THEN "Menys de 4 transacciones"
+			ELSE "Més de 4 transaccions"	END AS result
+FROM		transaction
+JOIN		company ON company.id = transaction.company_id
+GROUP BY	company.company_name;
+
+
+
+
+SELECT 
+    company.company_name,
+    CASE 
+        WHEN COUNT(transaction.id) > 4 THEN 'Más de 4 transacciones' 
+        ELSE 'Menos de 4 transacciones' 
+    END AS cantidad_transacciones
+FROM 
+    transaction
+JOIN 
+    company ON company.id = transaction.company_id
+GROUP BY 
+    company.company_name;
 
 
