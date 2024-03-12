@@ -18,9 +18,9 @@ WHERE	company.country = "germany";
 Utilizo la función WHERE para seleccionar solo las empresas de Alemania.
 Este código devuelve 118 filas que contienen información de las empresas que han realizado transacciones desde Alemania.
 
-![logo](files_sprin2\S2N1E1.png)
+![logo](files_sprin2/S2N1E1.png)
 
-</details>
+
 
 ## Exercici 2
 
@@ -54,7 +54,7 @@ Utilizo las funciones AVG() y DISTINCT para calcular la media de las transaccion
 
 El output es el siguiente:
 
-![logo](files_sprin2\S2N1E2.png)
+![logo](files_sprin2/S2N1E2.png)
 
 
 ## Exercici 3
@@ -74,7 +74,7 @@ El comando _**LIKE**_ permite buscar un patrón, que en este caso es que la prim
 
 El resultado es la siguiente tabla: 
 
-![logo](files_sprin2\S2N1E3.png)
+![logo](files_sprin2/S2N1E3.png)
 
 
 ## Exercici 4
