@@ -118,3 +118,5 @@ WHERE	company_id NOT IN (SELECT id FROM company);
 En otras palabras, esta parte de la consulta selecciona solo aquellas filas de la tabla _**transaction**_ cuyo _company_id_ no está presente en la columna _id_ de la tabla _**company**_.
 
 En ambos casos el resultado es null o vacio.
+
+
