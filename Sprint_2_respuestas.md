@@ -1,5 +1,7 @@
 
 # Sprint 2: Nivel 1
+### rectificaciones
+
 
 ## Exercici 1
 Mostra totes les transaccions realitzades per empreses d'Alemanya.	
