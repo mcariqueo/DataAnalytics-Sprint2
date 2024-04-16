@@ -6,16 +6,16 @@
 ## Exercici 1
 Mostra totes les transaccions realitzades per empreses d'Alemanya.	
 
-#### Respuesta
+#### Respuesta 
 Para resolver este exercici utilizo el siguiente código: 
 - Para realizarlo at traves de subquery:
 
-![logo](files_sprin2/S2N1E1.png)
+![](files_sprin2/S2N1E1.png)
 
 ## Exercici 2
 Màrqueting està preparant alguns informes de tancaments de gestió, et demanen que els passis un llistat de les empreses que han realitzat transaccions per una suma superior a la mitjana de totes les transaccions.
 
-#### Respuesta
+#### Respuesta 
 
 **Paso 1**: Genero la subquery para obtener la lista de id de las empresas cuyo valor de la media tranacciones fue mayor a la media.
 
@@ -37,7 +37,7 @@ El resultado completo es el siguiente:
 ![](files_sprin2/S2N1E3.png)
 
 
-## Exercici 4
+## Exercici 4 - revisar not in , in
 
 Van eliminar del sistema les empreses que no tenen transaccions registrades, lliura el llistat d'aquestes empreses.
 
@@ -52,7 +52,7 @@ En otras palabras, esta parte de la consulta selecciona solo aquellas filas de l
 
 En este caso todas las compañias tienen transacciones, por lo que el output queda igual a ***company***.
 
-///////////
+
 # Sprint 2- Nivel 2
 ## Exercici 1
 En la teva empresa, es planteja un nou projecte per a llançar algunes campanyes publicitàries per a fer competència a la companyia **Non Institute**. Per a això, et demanen la llista de totes les transaccions realitzades per empreses que estan situades en el mateix país que aquesta companyia.
@@ -69,7 +69,7 @@ En la teva empresa, es planteja un nou projecte per a llançar algunes campanyes
 
 ## Exercici 2
 
-### Respuesta Corregida con subquery:
+### Respuesta 
 ![](files_sprin2/S2N2E2.png)
 
 1. El company_id me serivrá para obtener el nombre y el monto ya que los utilizaré en las otras subqueries del las **SELECT**

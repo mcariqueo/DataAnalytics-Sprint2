@@ -3,13 +3,12 @@
 ## Exercici 1
 /* Mostra totes les transaccions realitzades per empreses d'Alemanya.*/
 
-	
-	SELECT 	*	
+		SELECT 	*	
     FROM 	transaction 
     WHERE 	company_id 	IN 
 			(SELECT	id	
              FROM	company
-             WHERE	company.country = "germany");			
+             WHERE	country = "germany");			
 
 ## Exercici 2
 /* Màrqueting està preparant alguns informes de tancaments de gestió,
@@ -21,7 +20,7 @@
 	SELECT AVG(amount) FROM transactions.transaction;
         
 	
-	SELECT 	DISTINCT company_name
+	SELECT 	company_name
 	FROM 			 company			
 	WHERE id IN (SELECT	company_id	
 				 FROM transaction 
@@ -33,17 +32,11 @@
 però no recorden el seu nom, només recorden que el seu nom iniciava amb la lletra c. 
 Com els pots ajudar? Comenta-ho acompanyant-ho de la informació de les transaccions.*/
 
-		SELECT *
-        FROM 	transactions.company					# 
-	    JOIN 	transactions.transaction				# 
-	    ON		transaction.company_id = company.id		# 
-        WHERE   company.company_name LIKE "c%"; 
-
 		SELECT *			FROM 	transaction
         WHERE	company_id 	IN 
 							(SELECT id 
 							 FROM 	company 
-							 WHERE  	company_name LIKE "c%"); 
+							 WHERE  company_name LIKE "c%"); 
 
         
 	
@@ -81,21 +74,20 @@ SELECT
 FROM	transaction t
 WHERE	amount = (SELECT max(amount) FROM transaction);
 
-
-
-
 # Sprint 2 - Nivell 3
 ## Exercici 1
-/* necessiten el llistat dels països la mitjana de transaccions dels quals sigui superior a la mitjana general.*/
+/* necessiten el llistat dels països la mitjana de transaccions 
+dels quals sigui superior a la mitjana general.*/
 
 
-SELECT DISTINCT country from company
-WHERE id IN (
-			SELECT DISTINCT company_id 
-            FROM	transaction 
-            WHERE	amount > (SELECT AVG (amount) FROM transaction))
-ORDER BY 1;
 
+SELECT country, ROUND(AVG(total_amount), 2) AS average_amount
+FROM	(SELECT	country,
+		(SELECT	sum(amount) FROM transaction WHERE company_id = company.id) AS total_amount
+         FROM company) AS subtable
+GROUP BY country
+HAVING average_amount > (SELECT AVG (amount) FROM transaction)
+ORDER BY average_amount DESC;
 
 
 ## Exercici 2
